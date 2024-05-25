@@ -1,0 +1,11 @@
+{
+    "name": "MyBlueprint Fitness Tracker",
+    "short_name": "MyBlueprint",
+    "start_url": "index.html",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "icons": [
+     
+    ]
+  }
+  
