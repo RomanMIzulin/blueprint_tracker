@@ -8,14 +8,20 @@
     <link href="./output.css" rel="stylesheet" />
     <script src="logic.js" defer></script>
   </head>
-  <body class="p-6 bg-gray-100">
-    <div class="max-w-lg p-6 mx-auto bg-white rounded-lg shadow-lg">
-      <h1 class="mb-4 text-2xl font-bold">Exercises Tracker</h1>
+  <body class="p-1 bg-gray-100 sm:p-6">
+    <div class="max-w-lg p-6 mx-auto bg-white rounded-lg">
+      <div class="flex">
+        <h1 class="mb-4 text-2xl font-bold">Exercises Tracker</h1>
+
+        <a
+          href="https://github.com/RomanMIzulin/blueprint_tracker"
+          style="margin-left: auto"
+          ><img src="./github-mark.svg" class="h-7 opacity-55"
+        /></a>
+      </div>
       <div class="flex mb-4">
-        <label
-          for="total-time"
-          class="block w-4/5 text-sm font-medium text-gray-700"
-          >Total Week Exercises Time:</label
+        <label for="total-time" class="block w-4/5 pt-1 text-sm font-medium"
+          >Target Week Exercises Time:</label
         >
         <input
           id="total-time"
@@ -28,8 +34,12 @@
         <div class="flex items-center">
           <span class="w-1/3 font-medium">Light</span>
           <div class="w-2/3">
-            <input id="light" class="my-inputable-time text-center" style="width: 32px" /> minutes
-            out of<span id="light-week-val" class="ml-2">val</span>
+            <input
+              id="light"
+              class="text-center my-inputable-time"
+              style="width: 32px"
+            />
+            minutes out of<span id="light-week-val" class="ml-2">val</span>
           </div>
           <button
             class="w-8 h-8 text-black border-2 border-black border-solid rounded-full bg-white-500"
@@ -42,8 +52,12 @@
         <div class="flex items-center">
           <span class="w-1/3 font-medium">Moderate</span>
           <div class="w-2/3">
-            <input id="moderate" class="my-inputable-time text-center" style="width: 32px" /> minutes
-            out of<span id="moderate-week-val" class="ml-2">val</span>
+            <input
+              id="moderate"
+              class="text-center my-inputable-time"
+              style="width: 32px"
+            />
+            minutes out of<span id="moderate-week-val" class="ml-2">val</span>
           </div>
           <button
             class="w-8 h-8 text-black border-2 border-black border-solid rounded-full bg-white-500"
@@ -56,8 +70,12 @@
         <div class="flex items-center">
           <span class="w-1/3 font-medium">Vigorous</span>
           <div class="w-2/3">
-            <input id="vigorous" class="my-inputable-time text-center" style="width: 32px" /> minutes
-            out of<span id="vigorous-week-val" class="ml-2">val</span>
+            <input
+              id="vigorous"
+              class="text-center my-inputable-time"
+              style="width: 32px"
+            />
+            minutes out of<span id="vigorous-week-val" class="ml-2">val</span>
           </div>
           <button
             class="w-8 h-8 text-black border-2 border-black border-solid rounded-full bg-white-500"
@@ -67,27 +85,38 @@
           </button>
         </div>
       </div>
-      <div class="mt-6">
-        <h2 class="text-xl font-bold">Week Graph</h2>
+      <hr style="margin-top: 8px; margin-bottom: 8px" />
+      <div class="flex items-center">
+        <span class="w-1/3 font-medium">Your week total</span>
+        <span id="user-week-total" class="w-2/3 text-center">val</span>
+      </div>
+      <div class="mt-6" hidden>
+        <h2 class="text-xl font-bold" h>Week Graph</h2>
         <div id="week-graph" class="h-32 mt-4 bg-gray-200"></div>
       </div>
-      <p class="text-gray-400">Note: it saves info per browser.</p>
       <details>
-        <summary>check</summary>
-        <p>check</p>
+        <summary>Pulse zone reference</summary>
+
+        <ul class="list-disc ml-5">
+          <li>Light 88-105 bpm</li>
+          <li>Moderate 106-159 bpm</li>
+          <li>Vigorous 160+ bpm</li>
+        </ul>
       </details>
       <button
         class="px-4 py-2 mt-6 font-semibold text-gray-800 border border-gray-400 rounded shadow g-white hover:bg-gray-100"
         id="save-week"
+        hidden
       >
         Save Week
       </button>
       <button
-      class="ml-auto px-4 py-2 mt-6 font-semibold text-gray-800 border border-gray-400 rounded shadow g-white hover:bg-gray-100"
-      id="reset-week"
-    >
+        class="px-4 py-2 mt-6 ml-auto font-semibold text-gray-800 border border-gray-400 rounded shadow g-white hover:bg-gray-100"
+        id="reset-week"
+      >
         Reset Week
-    </button>
+      </button>
+      <p class="text-gray-400">Note: it saves info per device.</p>
     </div>
   </body>
 </html>

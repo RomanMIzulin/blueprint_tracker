@@ -7,6 +7,7 @@ const vigorousTime = document.getElementById("vigorous");
 const lightWeekTime = document.getElementById("light-week-val");
 const moderateWeekTime = document.getElementById("moderate-week-val");
 const vigorousWeekTime = document.getElementById("vigorous-week-val");
+const userWeekTotal = document.getElementById("user-week-total");
 const resetButton = document.getElementById("reset-week");
 const lS = localStorage;
 const saveWeekBut = document.getElementById("save-week");
@@ -22,9 +23,13 @@ const updateUITimes = () => {
         lightWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.1).toFixed(1)}h`;
         moderateTime.value = `${exerciseData.moderate}`;
         moderateWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.7).toFixed(1)}h`;
-        vigorousTime.value = `${exerciseData.moderate}`;
+        vigorousTime.value = `${exerciseData.vigorous}`;
         vigorousWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.2).toFixed(1)}h`;
     }
+    let totalUserTime = exerciseData.light + exerciseData.moderate + exerciseData.vigorous;
+    let totalUseHours = Math.floor(totalUserTime / 60);
+    let totalUserMinutes = totalUserTime % 60;
+    userWeekTotal.textContent = `${totalUseHours}h ${totalUserMinutes}m`;
     if (totalTimeInput) {
         totalTimeInput.value = localStorage.getItem("totalTime") || "7";
     }
