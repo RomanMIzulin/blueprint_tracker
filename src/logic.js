@@ -1,13 +1,15 @@
 "use strict";
-const totalTimeInput = document.getElementById('total-time');
-const weekGraph = document.getElementById('week-graph');
-const lightTime = document.getElementById('light');
-;
-const moderateTime = document.getElementById('moderate');
-;
-const vigorousTime = document.getElementById('vigorous');
-;
+const totalTimeInput = document.getElementById("total-time");
+const weekGraph = document.getElementById("week-graph");
+const lightTime = document.getElementById("light");
+const moderateTime = document.getElementById("moderate");
+const vigorousTime = document.getElementById("vigorous");
+const lightWeekTime = document.getElementById("light-week-val");
+const moderateWeekTime = document.getElementById("moderate-week-val");
+const vigorousWeekTime = document.getElementById("vigorous-week-val");
+const resetButton = document.getElementById("reset-week");
 const lS = localStorage;
+const saveWeekBut = document.getElementById("save-week");
 // current week execise data
 const exerciseData = {
     light: 0,
@@ -16,25 +18,26 @@ const exerciseData = {
 };
 const updateUITimes = () => {
     if (lightTime && moderateTime && vigorousTime) {
-        lightTime.value = `${exerciseData.light}m out of ${totalTimeInput.value}`;
-        moderateTime.value = `${exerciseData.moderate}m out of ${totalTimeInput.value}`;
-        vigorousTime.value = `${exerciseData.vigorous}m out of ${totalTimeInput.value}`;
+        lightTime.value = `${exerciseData.light}`;
+        lightWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.1).toFixed(1)}h`;
+        moderateTime.value = `${exerciseData.moderate}`;
+        moderateWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.7).toFixed(1)}h`;
+        vigorousTime.value = `${exerciseData.moderate}`;
+        vigorousWeekTime.textContent = `${(parseFloat(totalTimeInput.value) * 0.2).toFixed(1)}h`;
     }
-    ;
     if (totalTimeInput) {
-        totalTimeInput.value = localStorage.getItem('totalTime') || '7';
+        totalTimeInput.value = localStorage.getItem("totalTime") || "7";
     }
-    ;
 };
 const updateTotalTime = () => {
-    localStorage.setItem('totalTime', totalTimeInput.value);
+    localStorage.setItem("totalTime", totalTimeInput.value);
 };
 const updateLocalStorage = () => {
-    localStorage.setItem('currentWeek', JSON.stringify(exerciseData));
+    localStorage.setItem("currentWeek", JSON.stringify(exerciseData));
     calculateWeeklyStats();
 };
 const loadFromLocalStorage = () => {
-    const storedData = localStorage.getItem('currentWeek');
+    const storedData = localStorage.getItem("currentWeek");
     if (storedData) {
         Object.assign(exerciseData, JSON.parse(storedData));
         calculateWeeklyStats();
@@ -59,33 +62,42 @@ const renderGraph = () => {
         `;
     }
 };
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
     loadFromLocalStorage();
     updateUITimes();
-    const totalTime = document.getElementById('total-time');
+    const totalTime = document.getElementById("total-time");
     if (totalTime) {
-        totalTime.addEventListener('change', function (event) {
+        totalTime.addEventListener("change", function (event) {
             updateTotalTime();
+            updateUITimes();
         });
     }
     else {
-        console.log('totalTime is not found');
+        console.log("totalTime is not found");
     }
-    document.querySelectorAll('button').forEach(button => {
-        button.addEventListener('click', (event) => {
+    document.querySelectorAll("button").forEach((button) => {
+        button.addEventListener("click", (event) => {
             var _a;
             const target = event.target;
             const parent = target.parentElement;
             if (parent) {
-                const type = (_a = parent.querySelector('span')) === null || _a === void 0 ? void 0 : _a.innerText.toLowerCase();
-                if (target.innerText === '+') {
+                const type = (_a = parent
+                    .querySelector("span")) === null || _a === void 0 ? void 0 : _a.innerText.toLowerCase();
+                if (target.innerText === "+") {
                     addExerciseTime(type, 30);
                 }
-                else if (target.innerText === '>') {
+                else if (target.innerText === ">") {
                     startTracking(type);
                 }
             }
         });
+    });
+    resetButton.addEventListener("click", () => {
+        exerciseData.light = 0;
+        exerciseData.moderate = 0;
+        exerciseData.vigorous = 0;
+        updateLocalStorage();
+        updateUITimes();
     });
 });
 const startTracking = (type) => {
