@@ -4,6 +4,7 @@ interface ExerciseData {
 	vigorous: number;
 }
 
+const lS: Storage = localStorage;
 const totalTimeInput = document.getElementById(
 	"total-time",
 ) as HTMLInputElement;
@@ -25,7 +26,6 @@ const userWeekTotal = document.getElementById("user-week-total") as HTMLElement;
 const resetButton = document.getElementById("reset-week") as HTMLButtonElement;
 
 
-const lS: Storage = localStorage;
 
 const saveWeekBut = document.getElementById("save-week") as HTMLButtonElement;
 

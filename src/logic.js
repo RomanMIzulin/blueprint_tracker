@@ -1,4 +1,5 @@
 "use strict";
+const lS = localStorage;
 const totalTimeInput = document.getElementById("total-time");
 const weekGraph = document.getElementById("week-graph");
 const lightTime = document.getElementById("light");
@@ -9,7 +10,6 @@ const moderateWeekTime = document.getElementById("moderate-week-val");
 const vigorousWeekTime = document.getElementById("vigorous-week-val");
 const userWeekTotal = document.getElementById("user-week-total");
 const resetButton = document.getElementById("reset-week");
-const lS = localStorage;
 const saveWeekBut = document.getElementById("save-week");
 // current week execise data
 const exerciseData = {

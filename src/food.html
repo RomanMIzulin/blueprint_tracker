@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Food & Sleep planner</title>
+    <link href="./output.css" rel="stylesheet" />
+    <script src="foodLogic.js" defer></script>
+    <link rel="manifest" href="./manifest.json" />
+  </head>
+  <body class="p-1 bg-gray-100 sm:p-6">
+    <div class="max-w-lg p-6 mx-auto bg-white rounded-lg">
+      <div class="flex">
+        <h1 class="mb-4 text-2xl font-bold">Food & sleep schedule</h1>
+        <a
+          href="https://github.com/RomanMIzulin/blueprint_tracker"
+          style="margin-left: auto"
+          ><img src="./github-mark.svg" class="h-7 opacity-55"
+        /></a>
+      </div>
+      <div class="flex items-center">
+        <label class="font-medium" for="wakeuptime"
+          >Set your wake up time</label
+        >
+        <input
+          type="time"
+          id="wakeuptime"
+          class="my-inputable-time"
+          name="wakeuptime"
+          value="11:00"
+          required
+        />
+        <label for="activeTime">Active time</label>
+        <input
+          type="range"
+          id="activeTime"
+          class="my-inputable-time"
+          name="activeTime"
+          min="6"
+          maxp="24"
+          value="14"
+          required
+        />
+      </div>
+      <h3 class="space-y-4">Food schedule</h3>
+      <span class="space-y-4">
+        <label for="breakfast">Breakfast</label>
+        <input
+          type="time"
+          id="breakfast"
+          name="breakfast"
+          class="my-inputable-time"
+          value="13:00"
+          required
+        />
+        <label for="lunch">Lunch</label>
+        <input
+          type="time"
+          id="lunch"
+          class="my-inputable-time"
+          name="lunch"
+          value="15:00"
+          required
+        />
+        <label for="dinner">Dinner</label>
+        <input
+          type="time"
+          id="dinner"
+          name="dinner"
+          class="my-inputable-time"
+          value="17:00"
+          required
+        />
+      </span>
+      <div class="space-y-4">
+        <label for="waterTime">Last water at</label>
+        <input
+          type="time"
+          id="waterTime"
+          name="waterTime"
+          class="my-inputable-time"
+          value="19:00"
+          required
+        />
+      </div>
+      <hr style="margin-top: 8px; margin-bottom: 8px" />
+      <div class="space-y-4">
+        <label for="targetSleepTime">Target go to bed time</label>
+        <input
+          type="time"
+          id="targetSleepTime"
+          name="targetSleepTime"
+          class="my-inputable-time"
+          value="21:00"
+          required
+        />
+      </div>
+      <button
+        class="px-4 py-2 mt-6 ml-auto font-semibold text-gray-800 border border-gray-400 rounded shadow g-white hover:bg-gray-100"
+        id="reset-week"
+      >
+        Reset defaults
+      </button>
+      <p class="text-gray-400">Note: it saves info per device.</p>
+    </div>
+  </body>
+</html>
